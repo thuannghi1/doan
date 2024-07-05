@@ -1,0 +1,111 @@
+<style> 
+.hinhanh{
+  width:100px;
+  padding-left :10px;
+  padding-top:  20px
+
+}
+
+  .sp{
+    padding-top: 30px
+  }
+        .Edit {
+            border: 1px solid;
+            padding: 5px;
+            margin-top: 50px;
+            margin-left: 20px;
+            color: black;
+            text-decoration: none;
+        }
+        .Edit:hover {
+            background-color: blue;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        .category {
+            padding: 10px 0;
+            display: content;
+        }
+        .category-content {
+            display: flex;  
+        }
+        .category-content-left {
+            width: 25%;
+            display: flex;
+        }
+
+        .category-content-left-big-img {
+            width: 100%;
+            padding: 20px;
+        }
+
+        .category-content-left-big-img img {
+            width:100%;
+        }
+
+
+        .category-content-right {
+            padding-top: 20px;
+            width: 75%;
+        }
+        .bangthongtin th{
+            text-align: left;
+        }
+
+        table {
+            margin: 15px 0;
+        }
+        .bangthongtin tr td {
+            padding: 10px 20px;
+        }
+        .h1{
+            color: red ;
+            padding-left: 500px;
+        }
+        
+ .Back {
+    border: 1px solid;
+    padding: 5px;
+    margin-left: 10px;
+    color: black;
+    text-decoration: none;
+  }
+  .Back:hover {
+    background-color: black;
+    color: white;
+    transition: all 0.3s ease;
+  }
+  </style>
+<p style="color: green"><%= notice %></p>
+<p style="padding: 30px 30px 30px 30px; font-weight: bold; font-size: 20px; border-bottom: 1px solid #dddd;">Sản Phẩm </p> <br><br>
+
+<div id="san_phams "style="overflow-y: auto; max-height:640px">
+  <% @san_phams.each do |san_pham| %>
+ <section class="category">
+      <div class="container">
+          <div class="category-content">
+              <div class="category-content-left">
+                  <div class="category-content-left-big-img">
+                   <img src="<%= san_pham.AnhMinhHoa %>" alt="">
+                     </div>
+                  </div>
+                  <div class="category-content-right">
+                    <div class="category-content-right-name">
+                    <h1><%= san_pham.TenSP %></h1>
+                  </div>
+                  <table class="bangthongtin" cellspacing="0">
+                      <tr><th>Mã sản phẩm:</th><td><%= san_pham.id %></td></tr>
+                      <tr><th>Giá:</th><td><%= san_pham.Gia %><sup>VND</sup></td></tr>
+                      <tr><th>Loại sản phẩm: </th><td><%= san_pham.danh_muc.TenDM %></td>
+                  </table>
+                  <table>
+                    <tr><th style="text-align: left; padding-bottom: 10px">Mô tả: <%= san_pham.MoTa %></th></tr>
+                   </table>
+              </div>
+          </div>
+      </div>
+  </section>
+  <div style= "padding-left: 45%" ><%= link_to 'Chỉnh Sửa', edit_san_pham_path(san_pham), class: "Edit" %>
+   </div>
+  <% end %>
+<%= link_to "New san pham", new_san_pham_path %>

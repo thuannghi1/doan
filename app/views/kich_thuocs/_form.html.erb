@@ -1,0 +1,22 @@
+<%= form_with(model: kich_thuoc) do |form| %>
+  <% if kich_thuoc.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(kich_thuoc.errors.count, "error") %> prohibited this kich_thuoc from being saved:</h2>
+
+      <ul>
+        <% kich_thuoc.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :Size, style: "display: block" %>
+    <%= form.text_field :Size %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

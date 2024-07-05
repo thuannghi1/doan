@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Doan1</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+   <header>
+        <div class="logo">
+            <%= link_to home_index_path do %>
+                <%= image_tag 'icon/Logo1.png' %>
+            <% end %>
+        </div>
+    
+        <div class="menu">
+            <li><a href="#"><%= link_to 'TRANG CHỦ',home_index_path%></a></li>
+            <li><a href="*"><%= link_to 'LIÊN HỆ', lien_he_index_path%></a></li>
+        </div>
+        
+        <div class="search">
+            <p style="padding-left: 190px;"></p>
+            <li>
+            <% if session[:nguoidung_id] %>
+                    <% nguoidung = Nguoidung.find(session[:nguoidung_id]) %>
+                    <div class="vien">
+                        <%= link_to admin_index_path do %>
+                            <%= image_tag 'icon/user.png', class: "anhdaidien" %>
+                        <% end %>
+                    </div>
+                    <ul class="sub-user">
+                        <li>
+                            <%= link_to admin_index_path do %>
+                                <% nguoidung.TenND %>
+                            <% end%>
+                        </li>
+                        <li><%= link_to 'Đăng xuất', logout_path, method: :delete, data: { confirm: "Bạn có chắc muốn đăng xuất?" } %></li>
+                    </ul>
+                <% else %>
+                    <a href="#"><%= image_tag 'icon/user.png', class: "anhdaidien" %></a>
+                    <ul class="sub-user">
+                        <li><%= link_to 'Đăng nhập', dang_nhap_index_path %></li>
+                        <li><%= link_to 'Đăng ký', dang_ky_index_path %></li>
+                    </ul>
+                <% end %>
+            </li>|
+            <li>
+                <a href="#" title="Giỏ hàng">
+                    <%= link_to carts_index_path do %>
+                        <%= image_tag 'icon/shopping-cart.png', class: "giohang" %>
+                    <% end %>
+                </a>
+            </li>  
+        </div>
+    </header>
+    <%= yield %>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        function submitCategoryForm() {
+            document.getElementById("category-form").submit();
+        }
+
+        function sortBooks() {
+            const sortValue = document.getElementById('sortBooks').value;
+            const urlParams = new URLSearchParams(window.location.search);
+            urlParams.set('sort', sortValue);
+            window.location.search = urlParams.toString();
+        }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,47 @@
+<style>  .t:hover{
+    background-color: green;
+  }
+</style>
+<%= form_with(model: san_pham) do |form| %>
+  <% if san_pham.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(san_pham.errors.count, "error") %> prohibited this san_pham from being saved:</h2>
+
+      <ul>
+        <% san_pham.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <p>Tên Sản Phẩm</p>
+    <%= form.text_field :TenSP %>
+  </div>
+
+  <div>
+       <p>Ảnh Minh Họa</p>
+    <%= form.file_field :AnhMinhHoa %>
+  </div>
+
+ 
+  <div>
+     <p>Chọn Danh Mục</p>
+    <%= form.collection_select :danh_muc_id, DanhMuc.all, :id, :TenDM, prompt: "Chọn danh mục"%>
+  </div>
+
+  <div>
+     <p>Chọn Giá Tiền</p>
+    <%= form.text_field :Gia %>
+  </div>
+
+  <div>
+    <p>Mô Tả Sản Phẩm</p>
+    <%= form.text_field :MoTa %>
+  </div>
+
+  <div>
+    <%= form.submit 'Cập Nhật'  , class:'t'%>
+  </div>
+<% end %>

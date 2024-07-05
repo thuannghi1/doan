@@ -1,0 +1,74 @@
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  padding: 20px;
+}
+
+.notice {
+  color: green;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.gio_hang_content {
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  margin-bottom: 20px;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+}
+
+.actions a,
+.actions button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+  cursor: pointer;
+}
+
+.actions button {
+  appearance: none;
+}
+
+.actions a.edit-link {
+  background-color: #2196F3;
+}
+
+.actions a.back-link {
+  background-color: #red;
+}
+
+.actions button.destroy-button {
+  background-color: red
+}
+
+</style>
+<body>
+
+  <p class="notice"><%= notice %></p>
+
+  <div class="gio_hang_content <%= @gio_hang.state %>">
+    <%= render @gio_hang %>
+  </div>
+
+  <div class="actions">
+    <% if @gio_hang.state == 'cho_xac_nhan' %>
+      <%= link_to "Xác nhận đơn hàng", confirm_gio_hang_path(@gio_hang), method: :patch, class: "confirm-link" %>
+    <% end %>
+    <%= link_to "Sửa đơn hàng", edit_gio_hang_path(@gio_hang), class: "edit-link" %> |
+    <%= link_to "Trở về", gio_hangs_path, class: "back-link" %>
+    <%= button_to "Xóa Đơn Hàng", @gio_hang, method: :delete, class: "destroy-button" %>
+  </div>
+
+</body>

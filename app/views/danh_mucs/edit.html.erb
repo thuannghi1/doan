@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chỉnh sửa danh mục quần áo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 20px;
+            color: #333;
+        }
+        .h1 {
+            text-align: center;
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+        .Edit, .Back, .Destroy {
+            display: inline-block;
+            border: 1px solid #ced4da;
+            padding: 10px 20px;
+            margin: 10px 10px 10px 0;
+            color: #333;
+            text-decoration: none;
+            border-radius: 4px;
+            background-color: #e9ecef;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            font-size: 15px;
+            text-align: center;
+        }
+        .Edit:hover {
+            background-color: #007bff;
+            color: white;
+        }
+        .Back:hover {
+            background-color: #343a40;
+            color: white;
+        }
+        .Destroy:hover {
+            background-color: red;
+            color: white;
+            cursor: pointer;
+        }
+        form {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        form input,form select,form textarea,form button {
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            font-size: 1em;
+        }
+
+        form button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        form button:hover {
+            background-color: #0056b3;
+        }
+        div {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="h1">Chỉnh sửa danh mục quần áo</h1>
+
+    <%= render "form", danh_muc: @danh_muc %>
+
+    <br>
+
+    <div>
+        <%= link_to "Chỉnh sửa", @danh_muc, class: 'Edit' %> |
+        <%= link_to "Trở về", danh_mucs_path, class: 'Back' %>
+    </div>
+</body>
+</html>

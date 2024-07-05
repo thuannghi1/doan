@@ -1,0 +1,27 @@
+<%= stylesheet_link_tag 'index', media: 'all' %>
+<body>
+<div style="display:none">
+    <%= session[:nguoidung_id]%>
+</div>
+<section class="Cartegory">
+    <div class="container">
+        <div class="Cartegory-right-content">
+            <% @san_phams.each do |sanpham| %>
+                <div class="khung">
+                    <div class="product-khunganh">
+                        <%= link_to chi_tiet_sp_index_path(id: sanpham.id) do %>
+                            <img class="khunganh" src="<%= sanpham.AnhMinhHoa.url %>" alt="" title="">
+                        <% end %>
+                    </div>
+                    <div class="tieude">
+                        <div class="tensach">
+                            <li class="khngtieude"><a href="#" class="ten"><%= sanpham.TenSP %></a></li>
+                            <li><a href="#" class="gia"> <%= sanpham.Gia %></a><sup style="color:#7e3c05 ">VND</sup></li>
+                        </div>
+                            </div>
+                </div>  
+            <% end %>  
+        </div>
+    </div>  
+</section>
+</body>

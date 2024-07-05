@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chi tiết sản phẩm</title>
+    <style>
+        /* Reset default browser styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 20px;
+        }
+
+        .product-container {
+            display: flex;
+            flex-direction: row;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            max-width: 800px;
+            width: 100%;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: auto;
+            max-width: 400px;
+            display: block;
+        }
+
+        .product-details {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            flex: 1;
+        }
+
+        .product-name {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .product-price {
+            font-size: 20px;
+            color: #d9534f;
+            margin-bottom: 20px;
+        }
+
+        .product-size,
+        .product-quantity {
+            margin-bottom: 20px;
+        }
+
+        .product-size label,
+        .product-quantity label {
+            font-size: 16px;
+            margin-right: 10px;
+        }
+
+        .product-size select,
+        .product-quantity input {
+            padding: 5px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .product-description {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.5;
+        }
+
+        .product-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .add-to-cart {
+            background-color: #5cb85c;
+            color: white;
+        }
+
+        .back {
+            background-color: #5bc0de;
+            color: white;
+        }
+
+        .add-to-cart:hover {
+            background-color: #4cae4c;
+        }
+
+        .back:hover {
+            background-color: #46b8da;
+        }
+
+        .quantity-input {
+            width: 60px;
+        }
+
+        .success-message {
+            display: none;
+            color: green;
+            font-size: 16px;
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <% if @san_pham %>
+        <div class="product-container">
+            <div class="product-image">
+                <%= image_tag @san_pham.AnhMinhHoa.url %>
+            </div>
+            <div class="product-details">
+                <h1 class="product-name"><%= @san_pham.TenSP %></h1>
+                <p class="product-price">Giá: <%= @san_pham.Gia %> VND</p>
+                <div class="product-size">
+                    <label for="size">Size:</label>
+                    <select id="kich_thuoc_id" name="kich_thuoc_id">
+                        <option value="">Chọn Size</option>
+                        <% @kich_thuoc.each do |kt| %>
+                            <option value="<%= kt.id %>"><%= kt.Size %></option>
+                        <% end %>
+                    </select>
+                </div>
+                <%= form_with(url: CTS_them_sp_chi_tiet_sp_path(@san_pham), method: :post, local: true, id: "add-to-cart-form") do |form| %>
+                    <div class="product-quantity">
+                        <label for="soluong">Số lượng:</label>
+                        <%= form.number_field :soluong, min: 1, value: 1, step: "1", inputmode: "numeric", id: "quantity", class: "quantity-input" %>
+                    </div>
+                    <p class="product-description">
+                        Mô tả sản phẩm: <%= @san_pham.MoTa %>
+                    </p>
+                    <div class="product-actions">
+                        <%= form.hidden_field :kich_thuoc_id, value: nil, id: "hidden_kich_thuoc_id" %>
+                        <%= form.submit "Thêm vào giỏ hàng", class: "btn add-to-cart", id: "add-to-cart-button" %>
+                        <%= link_to root_path do %>
+                        <button class="btn back" type="button">Trở về</button>
+                        <% end %>
+                    </div>
+                <% end %>
+                <div class="success-message" id="success-message">
+                    Đã thêm vào giỏ hàng thành công!
+                </div>
+            </div>
+        </div>
+    <% else %>
+        <p>Không thấy sản phẩm</p>
+    <% end %>
+
+    <script>
+        document.querySelector('#kich_thuoc_id').addEventListener('change', function() {
+            document.querySelector('#hidden_kich_thuoc_id').value = this.value;
+        });
+
+        document.querySelector('#add-to-cart-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the form from submitting immediately
+            const form = event.target;
+
+            // Perform an AJAX request to submit the form data
+            const xhr = new XMLHttpRequest();
+            xhr.open(form.method, form.action, true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    document.querySelector('#success-message').style.display = 'block';
+                    setTimeout(() => {
+                        document.querySelector('#success-message').style.display = 'none';
+                    }, 3000); // Hide the message after 3 seconds
+                }
+            };
+            xhr.send(new URLSearchParams(new FormData(form)).toString());
+        });
+    </script>
+</body>
+</html>

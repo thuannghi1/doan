@@ -1,0 +1,291 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+body{
+    box-sizing: border-box;
+}
+.admin-content{
+     
+    position: fixed;
+    width: 100%;
+    display: flex;
+}
+.admin-content-left{
+    width: 20%;
+    height: 900px;
+    flex: 1;
+    border-right: 1px solid #dddd;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+}
+.admin-content-right{
+     
+    width: 80%;
+    background-color: #ffff;
+}
+.admin-content-left-top {
+    border: none;
+    padding-bottom: 10px;
+}
+.admin-content-left-top::before {
+    position: fixed;
+    content: '';
+    background-color: #2d2c2c;
+    width: 20%;
+    height: 120px;
+    box-shadow: 0 0 15px 0 rgba(0,0,0,0.3);
+}
+.admin-avt {
+    margin-left: 75px;
+    position: relative;
+    
+}
+.admin-avt img {
+    width: 135px;
+    position: fixed;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #7b7b7bdd;
+    background-color: white;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+    margin-top: 30px;
+}
+
+
+.admin-content-left-bottom {
+    margin-top: 170px;
+}
+.admin-content-left-bottom span {
+    padding-left: 10px;
+}
+.admin-content-left-bottom a{
+    text-decoration: none;
+    color: #000;
+    padding-left: 5px;
+    font-weight: bold;
+}
+
+.quanli a {
+    text-decoration: none;
+    color: #000;
+}
+
+.chucnang {
+    background-color: #ffff;
+    height: 500px;
+}
+
+.quanli span {
+    font-weight: bold;
+}
+span p {
+    padding: 15px 0 2px 30px;
+}
+hr{
+    box-shadow: 0 1px 5px 0px rgba(0,0,0,0.3);
+}
+.chucnang li {
+    list-style-type: 1;
+    padding-left: 30px;
+    padding-top: 10px;
+}
+
+.chucnang ul {
+    display: none;
+    transition: all 0.3s ease;
+    background-color: #ffff;
+    border-top: 1px solid #747474dd;
+    border-bottom: 1px solid #747474dd;
+    width: 240px;
+
+}
+.chucnang ul li a{
+    font-size: 14px;
+}
+.chucnang ul li {
+    padding: 5px;
+    list-style: none;
+}
+div li:hover ul{
+    display: block;
+    transition: all 1s ease;
+}
+.chucnang ul li:hover{
+    background-color: black;
+    transition: all 0.3s ease;
+}
+.chucnang ul li a:hover {
+    color: #dddd;
+}
+
+
+/* Quan ly sach */
+
+.qlsach-content-left tr td{
+    padding: 5px;
+    width: 220px;
+}
+
+.qlsach-content {
+    display: flex;
+    width: 100%;
+}
+
+.qlsach-content-left {
+    flex: 5;
+    padding: 15px;
+    width: 80%;
+}
+
+
+.qlsach-content-left table{
+    width: 100%;
+    text-align: center;
+    padding-top: 10px;
+}
+
+.qlsach-content-left th {
+    padding-bottom: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    color: #333;
+    text-transform: uppercase;
+    border-collapse: collapse;
+    border-bottom: 2px solid #dddd;
+
+}
+
+.qlsach-content-left table p {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    color: #333;
+}
+
+.qlsach-table-content span {
+    text-align: center;
+} 
+.qlsach-content-left table span {
+    display: inline-block;
+    padding-top: 3px;
+    width: 50px;
+    height: 30px;
+    border: 2px solid #dddd;
+    cursor: pointer;
+    background-color:rgba(2, 206, 206, 0.71);
+    color: #ffff;
+}
+.qlsach-content-left table span:hover {
+    box-shadow: 0px 0px 2px 2px rgba(0.2, 0.2, 0.2, 0.2);
+}
+.qlsach-content-left table td {
+    padding: 20px 0;
+    border-bottom: 2px solid #dddd;
+}
+
+.qlsach-content-left td:first-child img {
+    width: 130px;
+}
+
+.qlsach-content-left td:nth-child(2) {
+    max-width: 130px;
+}
+
+.qlsach-content-right {
+    flex: 1;
+    padding: 0 20px;
+    border-left: 2px solid #dddd;
+    width: 20%;
+}
+
+.qlsach-content-right table {
+    width: 100%;
+    border-bottom: 2px solid #dddd;
+}
+
+.qlsach-content-right table th {
+    padding-bottom: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #333;
+    font-size: 12px;
+    border-collapse: collapse;
+    border-bottom: 2px solid #dddd;
+}
+
+.qlsach-content-right table td {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #333;
+    font-size: 12px;
+    padding: 6px 0;
+
+}
+.qlsach-content-right table tr:nth-child(4) td {
+    border-bottom: 2px solid #dddd;
+
+}
+
+.qlsach-content-right table tr td:last-child {
+    text-align: right;
+}
+
+.qlsach-table-content tr td input {
+    margin: 10px;
+}
+
+.qlsach-table-content tr td img {
+    width: 120px;
+    height: 200px;
+}
+.maSach input{
+    width: 100px;
+}
+.tenSach input {
+    width: 100px;
+    margin-left: 20px;
+}
+.MaDM input {
+    width: 30px;
+}
+.Gia input {
+    width: 100px;
+}
+.MaNXB input {
+    width: 30px;
+}
+.motasach {
+    font-size: 13px;
+    width: 400px;
+}
+.xoa {
+    padding-left: 10px;
+}
+
+*::-webkit-scrollbar {
+    width: 10px;
+    width: 10px;
+  }
+  *::-webkit-scrollbar-track {
+    border-radius: 5px;
+    background-color: #DFE9EB;
+  }
+  
+  *::-webkit-scrollbar-track:hover {
+    background-color: #B8C0C2;
+  }
+  
+  *::-webkit-scrollbar-track:active {
+    background-color: #B8C0C2;
+  }
+  
+  *::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-color: #2d2c2c;
+  }
+  
+  *::-webkit-scrollbar-thumb:hover {
+    background-color: #4a4a4a;
+  }
+  
+  *::-webkit-scrollbar-thumb:active {
+    background-color: #4a4a4a;
+  }

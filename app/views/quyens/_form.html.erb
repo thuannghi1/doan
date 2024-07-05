@@ -1,0 +1,22 @@
+<%= form_with(model: quyen) do |form| %>
+  <% if quyen.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(quyen.errors.count, "error") %> prohibited this quyen from being saved:</h2>
+
+      <ul>
+        <% quyen.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :TenQ, style: "display: block" %>
+    <%= form.text_field :TenQ %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

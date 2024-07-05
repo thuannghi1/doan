@@ -1,0 +1,22 @@
+<%= form_with(model: phai) do |form| %>
+  <% if phai.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(phai.errors.count, "error") %> prohibited this phai from being saved:</h2>
+
+      <ul>
+        <% phai.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :TenPhai, style: "display: block" %>
+    <%= form.text_field :TenPhai %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

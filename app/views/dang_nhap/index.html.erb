@@ -1,0 +1,144 @@
+<style>
+body#loginForm {
+  font-family: 'Roboto', sans-serif;
+  background: linear-gradient(to right, #6a11cb, #2575fc);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.form_dangnhap {
+  background-color: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 500px;
+  text-align: center;
+}
+
+.form_dangnhap .header {
+  font-size: 26px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.thongtin-dangky {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.thongtin-dangky th {
+  text-align: left;
+  padding-bottom: 8px;
+  font-weight: 500;
+  color: #555;
+}
+
+.thongtin-dangky td {
+  padding-bottom: 15px;
+}
+
+.input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-sizing: border-box;
+  transition: border-color 0.3s;
+}
+
+.input:focus {
+  border-color: #2575fc;
+  outline: none;
+}
+
+.button-login {
+  width: 100%;
+  padding: 12px;
+  background-color: #2575fc;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.button-login:hover {
+  background-color: #1a56d9;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: #2575fc;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+img {
+  vertical-align: middle;
+}
+
+.return-home {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  justify-content: center;
+}
+
+.return-home img {
+  margin-right: 5px;
+}
+
+.return-home a {
+  color: #333;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.return-home a:hover {
+  color: #2575fc;
+}
+
+
+</style>
+
+<body id="loginForm">
+  <%= form_with(url: login_path, local: true, html: { class: "form_dangnhap" }) do |f| %>
+    <p class="header">ĐĂNG NHẬP</p>
+    <table class="thongtin-dangky">
+      <tr>
+        <th>Tên tài khoản<span style="color: red;">*</span></th>
+        <td><%= f.email_field :email, required: true, placeholder: "Tên tài khoản hoặc Email", class: "input" %></td>
+      </tr>
+      <tr>
+        <th>Mật khẩu<span style="color: red;">*</span></th>
+        <td><%= f.password_field :MatKhau, required: true, placeholder: "Nhập mật khẩu", class: "input" %></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><%= f.submit "Đăng nhập", class: "button-login" %></td>
+      </tr>
+     <tr>
+        <td colspan="2">
+          <p style="margin-top: 5px; text-align: center; font-size: 13px">Chưa có tài khoản? <%= link_to 'Đăng ký ngay', dang_ky_index_path %></p>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" class="return-home">
+          <%= image_tag 'icon/arrow-left.png', width: "15px", height: "15px" %>
+          <p style="padding-left: 5px;"><%= link_to 'Về trang chủ', home_index_path %></p>
+        </td>
+      </tr>
+    </table>
+  <% end %>
+</body>

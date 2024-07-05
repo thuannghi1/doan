@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  TenND: MyString
+  Email: MyString
+  DiaChi: MyString
+  SDT: MyString
+  MatKhau: MyString
+  phai: one
+  quyen: one
+
+two:
+  TenND: MyString
+  Email: MyString
+  DiaChi: MyString
+  SDT: MyString
+  MatKhau: MyString
+  phai: two
+  quyen: two

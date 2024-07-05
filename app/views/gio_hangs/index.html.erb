@@ -1,0 +1,99 @@
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  margin: 0;
+  padding: 20px;
+}
+
+.notice {
+  color: green;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+h1 {
+  color: #333;
+  font-size: 2.5em;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+#gio_hangs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.gio_hang {
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  width: 300px;
+  flex: 0 1 300px;
+}
+.gio_hang p {
+  margin: 10px 0;
+}
+
+.show-link, .new-link {
+  display: inline-block;
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.show-link:hover, .new-link:hover {
+  background-color: #45a049;
+}
+button.t {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+  cursor: pointer;
+}
+
+button.t:hover {
+  background-color: #45a049;
+}
+
+button.t a {
+  color: white;
+  text-decoration: none;
+}
+
+button.t a:hover {
+  text-decoration: none;
+}
+
+</style>
+  <button class='t' > <%= link_to 'Trở về ' , admin_index_path %> </button>
+<body>
+ 
+  <p class="notice"><%= notice %></p>
+    <h1> Quản Lí Đơn Đặt Hàng </h1>
+  <div id="gio_hangs">
+    <% @gio_hangs.each do |gio_hang| %>
+      <div class="gio_hang">
+        <%= render gio_hang %>
+        <p>
+          <%= link_to "Xem Đơn Hàng", gio_hang, class: "show-link" %>
+        </p>
+      </div>
+    <% end %>
+  </div>
+</body>

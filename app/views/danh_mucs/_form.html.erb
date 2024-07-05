@@ -1,0 +1,46 @@
+<style>
+.Update {
+    border: 1px solid;
+    padding: 5px;
+    margin-left: 20px;
+    color: black;
+    text-decoration: none;
+    font-size: 15px;
+    background: none;
+    margin-top:40px;
+  }
+  .Update:hover {
+    background-color: red;
+    color: white;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+  .h{
+    padding-top :20px;
+  }
+  .t:hover{
+    background-color: green;
+  }
+  </style>
+<%= form_with(model: danh_muc) do |form| %>
+  <% if danh_muc.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(danh_muc.errors.count, "error") %> prohibited this danh_muc from being saved:</h2>
+
+      <ul>
+        <% danh_muc.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+     <p class="h" >Tên danh mục </p>
+    <%= form.text_field :TenDM %>
+  </div>
+
+  <div>
+    <%= form.submit 'Cập nhật' , class:'t' %>
+  </div>
+<% end %>

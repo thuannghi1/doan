@@ -1,0 +1,66 @@
+<style>
+  body{
+    overflow: auto;
+  } 
+.Edit {
+    border: 1px solid;
+    padding: 5px;
+    margin-top: 30px;
+    margin-left: 20px;
+    color: black;
+    text-decoration: none;
+    margin: 6px;
+}
+
+.Edit:hover {
+    background-color: blue;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+ .Back {
+    border: 1px solid;
+    padding: 5px;
+    margin-left: 10px;
+    color: black;
+    text-decoration: none;
+  }
+  .Back:hover {
+    background-color: green;
+    color: white;
+    transition: all 0.3s ease;
+  }
+
+tr td {
+  padding: 10px;
+}
+
+.i{
+  color:blue ;
+   padding-left: 550px
+}
+</style>
+<body>
+<p style="color: green"><%= notice %></p>
+<h1 class="i" >Danh Mục Quần Áo</h1>
+<table>
+<tr>
+ <td style="color: red">Mã danh mục</td>
+ <td style="color: red">Tên danh mục</td>
+ <td> </td>
+ </tr>
+  <% @danh_mucs.each do |danh_muc| %>
+    <tr>
+ <td><%= danh_muc.id %></td>
+ <td><%= danh_muc.TenDM %></td>
+<td><%= link_to "Chỉnh sửa ", edit_danh_muc_path(danh_muc), class:"Back" %> </td>
+</tr>
+  <% end %>
+  </table>
+
+<br>
+</div>
+
+<%= link_to "Thêm danh mục", new_danh_muc_path , class:"Back" %>
+
+

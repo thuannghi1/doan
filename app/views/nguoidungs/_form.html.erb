@@ -1,0 +1,53 @@
+<%= form_with(model: nguoidung) do |form| %>
+  <% if nguoidung.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(nguoidung.errors.count, "error") %> prohibited this nguoidung from being saved:</h2>
+
+      <ul>
+        <% nguoidung.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+   <strong>Tên Người Dùng</strong>
+    <%= form.text_field :TenND %> 
+  </div>
+
+  <div>
+       <strong>Email:</strong>
+    <%= form.text_field :Email %>
+  </div>
+
+  <div>
+     <strong>Địa Chỉ:</strong>
+    <%= form.text_field :DiaChi %>
+  </div>
+
+  <div>
+      <strong>Số Điện Thoại:</strong>
+    <%= form.text_field :SDT %>
+  </div>
+
+  <div>
+      <strong>Mật Khẩu:</strong>
+    <%= form.text_field :MatKhau %>
+  </div>
+
+  <div>
+     <strong>Giới Tính:</strong>
+    <%= form.text_field :phai_id %>
+  </div>
+
+  <div>
+       <strong>Loại Quyền:</strong>
+    <%= form.text_field :quyen_id %>
+  </div>
+
+  <div>
+    <%= form.submit   'Đồng ý' %>
+  </div>
+  
+<% end %>

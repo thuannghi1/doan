@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  TenSP: MyString
+  AnhMinhHoa: MyString
+  kich_thuoc: one
+  danh_muc: one
+  Gia: MyString
+  MoTa: MyString
+
+two:
+  TenSP: MyString
+  AnhMinhHoa: MyString
+  kich_thuoc: two
+  danh_muc: two
+  Gia: MyString
+  MoTa: MyString

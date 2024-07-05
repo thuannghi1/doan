@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @quyen %>
+
+<div>
+  <%= link_to "Edit this quyen", edit_quyen_path(@quyen) %> |
+  <%= link_to "Back to quyens", quyens_path %>
+
+  <%= button_to "Destroy this quyen", @quyen, method: :delete %>
+</div>

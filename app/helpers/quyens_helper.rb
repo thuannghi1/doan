@@ -1,0 +1,2 @@
+module QuyensHelper
+end

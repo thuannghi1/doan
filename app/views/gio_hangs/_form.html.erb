@@ -1,0 +1,57 @@
+<%= form_with(model: gio_hang) do |form| %>
+  <% if gio_hang.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(gio_hang.errors.count, "error") %> prohibited this gio_hang from being saved:</h2>
+
+      <ul>
+        <% gio_hang.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<div>
+    <strong>Tên Người Dùng</strong>
+    <%= form.text_field :nguoidung_id %>
+  </div>
+
+  <div>
+    <strong> Sản Phẩm </strong>
+    <%= form.text_field :TenSP %>
+  </div>
+
+  <div>
+    <strong>Ảnh Minh Họa </strong>
+    <%= form.text_field :AnhminhHoa %>
+  </div>
+
+  <div>
+    <strong>Tên Sản Phẩm </strong>
+    <%= form.text_field :TenSP %>
+  </div>
+
+  <div>
+  <strong>Giá </strong>
+    <%= form.number_field :Gia %>
+  </div>
+
+  <div>
+  <strong>Size </strong>
+    <%= form.text_field :kich_thuoc_id %>
+  </div>
+
+  <div>
+  <strong>Số Lượng </strong>
+    <%= form.number_field :soluong %>
+  </div>
+
+  <div>
+    <%= form.label :thanhtien, style: "display: block" %>
+    <%= form.number_field :thanhtien %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

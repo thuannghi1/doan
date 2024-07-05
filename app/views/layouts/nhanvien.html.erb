@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DoAn1</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "admin", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body >
+    <section class="admin-content">
+        <div class="admin-content-left">
+
+            <div class="admin-content-left-top">
+                <div class="admin-avt">
+                   <%= link_to khach_hang_index_path do %>
+                   <%= image_tag 'icon/admin-panel', class: "admin-avt-img" %>
+                   <% end %>
+                </div>
+            </div>
+
+           <div class="admin-content-left-bottom">
+                <span>
+                  <% if session[:nguoidung_id] %>
+                    <a><%= Nguoidung.find(session[:nguoidung_id]).TenND%></a>
+                  <% else %>
+                    <a>Người Dùng</a>
+                  <% end %>
+                </span> <hr> <br>
+                <span><i class="fa fa-home" aria-hidden="true"></i><a href="#"><%= link_to 'Trang Chủ',home_index_path%></a></span> <hr> <br>
+                <span><i class="fa fa-sign-out" aria-hidden="true"></i><a href="*"> <%= link_to 'Đăng xuất', logout_path, method: :delete, data: { confirm: "Bạn có chắc muốn đăng xuất?" }, class: 'logout-link' %></a></span> <hr>
+            </div>
+            <div class="quanli">
+                <span><p>Chức năng</p></span><hr>
+                <div class="chucnang">
+                                            
+                <li><a href="#" ><%= link_to "Quản lí Danh Mục Quần Áo", danh_mucs_path, class:"ql_sach" %></a>
+                    <ul class="menu_ql_sach">
+                        <li><a href="#"><%= link_to "Thêm Danh Mục Sản Phẩm", new_danh_muc_path %></a></li>
+                    </ul>
+                </li>
+                <li><a href="#" ><%= link_to "Quản lí Quần Áo",san_phams_path ,class:"ql_sach" %></a>
+                    <ul class="menu_ql_sach">
+                        <li><a href="#"><%= link_to "Thêm sản phẩm " , new_san_pham_path%></a></li>
+                    </ul>
+                </li>
+                <!-- Đơn hàng -->
+                <li><a href="#" class="ql_tt_dh" target="hienthi"></a>
+                    <%=link_to 'Quản lí đơn đặt hàng' , don_dat_hangs_path%>
+                </li>
+                </div>
+        </div>
+        </div>
+        <div class="admin-content-right">
+            <%= yield %>
+        </div>
+    </section>
+    
+  </body>
+</html>
