@@ -1,6 +1,6 @@
 databases:
   - name: doan
-    databaseName: doan_8vmx
+    databaseName: doan_fr6k
     user: minhthuan
     plan: free
 
