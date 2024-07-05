@@ -4,7 +4,7 @@ namespace :db do
       sizes = ["M", "L", "XL", "XXL"]
       
       sizes.each do |size|
-        KichThuoc.create!(name: size)
+        KichThuoc.create!(name: Size)
       end
     end
   end
