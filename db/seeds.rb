@@ -7,3 +7,10 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+KichThuoc.create([
+  { id: 1, Size: 'M' },
+  { id: 2, Size: 'L' },
+  { id: 3, Size: 'XL' },
+  { id: 4, Size: 'XXL' }
+])
